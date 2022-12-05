@@ -1,0 +1,12 @@
+Package: cgiarBase
+Type: Package
+Title: Base functions for biometrics analysis
+Version: 1.0.1
+Date: 2022-09-09
+Author: Giovanny Covarrubias-Pazaran
+Maintainer: Giovanny Covarrubias-Pazaran <covaruberpaz@gmail.com>
+Description: Software for analytical pipelines
+Depends: R (>= 2.14)
+License: GPL (>= 2)
+Imports: stats, graphics, grDevices
+Suggests: parallel
