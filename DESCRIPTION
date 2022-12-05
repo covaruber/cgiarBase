@@ -6,7 +6,7 @@ Date: 2022-09-09
 Author: Giovanny Covarrubias-Pazaran
 Maintainer: Giovanny Covarrubias-Pazaran <covaruberpaz@gmail.com>
 Description: Software for analytical pipelines
-Depends: R (>= 2.14)
+Depends: R (>= 3.5.0)
 License: GPL (>= 2)
 Imports: stats, graphics, grDevices
 Suggests: parallel
