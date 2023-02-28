@@ -12,7 +12,7 @@ cleanChar <- function(x){
   x <- gsub("dummy_country","",x)
   x <- gsub("dummy_trial",".",x)
 
-  x <- gsub("[[:punct:]]", "", x)
+  x <- gsub("[[:punct:]]", "_", x)
   x <- gsub("\xd1","N",x)
 
   return(x)
