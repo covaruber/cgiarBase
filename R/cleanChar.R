@@ -1,6 +1,4 @@
 cleanChar <- function(x){
-  x <- gsub("[[:punct:]]", "", x)
-  x <- gsub("\xd1","N",x)
 
   x <- gsub("dummy_pipeline_","",x)
   x <- gsub("dummy_season_","",x)
@@ -13,6 +11,9 @@ cleanChar <- function(x){
   x <- gsub("dummy_location","",x)
   x <- gsub("dummy_country","",x)
   x <- gsub("dummy_trial",".",x)
+
+  x <- gsub("[[:punct:]]", "", x)
+  x <- gsub("\xd1","N",x)
 
   return(x)
 }
