@@ -12,9 +12,13 @@ cleanChar <- function(x){
   x <- gsub("base_country","",x)
   x <- gsub("base_trial",".",x)
 
-  x <- gsub("[[:punct:]]", "-", x)
-  x <- gsub("___","-",x)
-  x <- gsub("__","-",x)
+  x <- toupper(x) # everything goes to upper case
+  x <- gsub(" ", "-", x) # remove all white spaces
+  x <- gsub("[[:punct:]]", "-", x) # all special characters become "-"
+  x <- gsub("-----","-",x) # ensure a single "-"
+  x <- gsub("----","-",x) # ensure a single "-"
+  x <- gsub("---","-",x) # ensure a single "-"
+  x <- gsub("--","-",x) # ensure a single "-"
   x <- gsub("\xd1","N",x)
 
   return(x)
