@@ -13,7 +13,7 @@ cleanChar <- function(x){
   x <- gsub("base_trial",".",x)
 
   x <- toupper(x) # everything goes to upper case
-  x <- gsub(" ", "-", x) # remove all white spaces
+  x <- gsub(" ", "", x) # remove all white spaces
   x <- gsub("[[:punct:]]", "-", x) # all special characters become "-"
   x <- gsub("-----","-",x) # ensure a single "-"
   x <- gsub("----","-",x) # ensure a single "-"
