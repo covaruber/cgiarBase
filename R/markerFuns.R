@@ -361,3 +361,20 @@ atcg1234 <- function(data, ploidy=2, format="ATCG", maf=0, multi=TRUE, silent=FA
   
   return(list(M=M,ref.alleles=tmp))
 }
+
+
+markerBackTransform <- function(marks, refs){
+  marks2 <- matrix(NA, nrow=nrow(marks), ncol = ncol(marks))
+  for(iMark in 1:ncol(marks)){ # iMark=1
+    marks2[,iMark] <- apply(as.data.frame(marks[,iMark]),1,function(x){
+      gsub(pattern=" ",replacement="",
+           paste(rep(refs["Alt",colnames(marks)[iMark]], abs(x-2) ),
+                 rep(refs["Ref",colnames(marks)[iMark]], x), collapse = ""
+           )
+      )
+    })
+  }
+  rownames(marks2) <- rownames(marks)
+  colnames(marks2) <- colnames(marks)
+  return(marks2)
+}
