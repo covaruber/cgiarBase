@@ -1,4 +1,5 @@
-atcg1234 <- function(data, ploidy=2, format="ATCG", maf=0, multi=TRUE, silent=FALSE, by.allele=FALSE, imp=TRUE, ref.alleles=NULL){
+atcg1234 <- function(data, ploidy=2, format="ATCG", maf=0, multi=TRUE, silent=FALSE, 
+                     by.allele=FALSE, imp=TRUE, ref.alleles=NULL){
   
   impute.mode <- function(x) {
     ix <- which(is.na(x))
@@ -115,11 +116,6 @@ atcg1234 <- function(data, ploidy=2, format="ATCG", maf=0, multi=TRUE, silent=FA
     
     fin.mat <- do.call(cbind,mat.list)
     rownames(fin.mat) <- rownames(da)
-    
-    # make full rank
-    #q <- qr(fin.mat)
-    #chas <- q$pivot[seq(q$rank)]
-    #fin.mat <- as.matrix(fin.mat[,chas])
     #############
     return(fin.mat)
   }
@@ -260,13 +256,14 @@ atcg1234 <- function(data, ploidy=2, format="ATCG", maf=0, multi=TRUE, silent=FA
         tmp <- tmp[, multi.allelic,drop=FALSE]
       }
       
-      Ref <- tmp[1,, drop=FALSE ]
-      Alt <- tmp[2,,drop=FALSE ]
+      Ref <- tmp[1, ]
+      Alt <- tmp[2, ]
       ####################################
       ## bind reference allele and markers and convert to numeric format based on the 
       # reference/alternate allele found
       ####################################
       cat("Converting to numeric format\n")
+      # print(str(markers))
       if(silent){
         M <- apply(cbind(Ref, markers), 1, function(x) {
           y <- gregexpr(pattern = x[1], text = x[-1], fixed = T)
@@ -284,7 +281,7 @@ atcg1234 <- function(data, ploidy=2, format="ATCG", maf=0, multi=TRUE, silent=FA
           return(ans)
         })
       }
-      
+      # print(str(M))
       gid.geno <- s1 #colnames(geno)
       rownames(M) <- gid.geno
       ####################################
