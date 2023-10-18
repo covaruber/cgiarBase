@@ -6,10 +6,10 @@ fixCoords <- function(mydataSub){
   nCols <- nRows <- numeric()
   orRows <- orCols <- list()
   for(i in 1:nReps){
-    nCols[i] <- ncol(ideal[,,i])
-    nRows[i] <- nrow(ideal[,,i])
-    orCols[[i]] <- as.numeric(colnames(ideal[,,i]))
-    orRows[[i]] <- as.numeric(rownames(ideal[,,i]))
+    nCols[i] <- ncol(ideal[,,i, drop=FALSE])
+    nRows[i] <- nrow(ideal[,,i, drop=FALSE])
+    orCols[[i]] <- as.numeric(colnames(ideal[,,i, drop=FALSE]))
+    orRows[[i]] <- as.numeric(rownames(ideal[,,i, drop=FALSE]))
   }
   # where each trial ends for cols
   end <- numeric()
